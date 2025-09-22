@@ -121,3 +121,21 @@ document.addEventListener("DOMContentLoaded", () => {
         flowsGroup.appendChild(path);
     }
 });
+
+let lastScrollTop = 0;
+const header = document.querySelector(".header");
+
+window.addEventListener("scroll", function() {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop) {
+        // Cuộn xuống -> Ẩn header
+        header.classList.add("hide");
+    } else {
+        // Cuộn lên -> Hiện header
+        header.classList.remove("hide");
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // tránh giá trị âm
+});
+

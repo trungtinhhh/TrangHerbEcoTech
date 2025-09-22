@@ -23,6 +23,18 @@ body {
     backdrop-filter: blur(10px);
 }
 
+/* Trạng thái ẩn */
+.header.hide {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+/* Trạng thái bình thường */
+.header {
+    transition: transform 0.3s ease;
+}
+
+
 .nav {
     display: flex;
     justify-content: space-between;
@@ -579,7 +591,7 @@ body {
 }
 
 .ecosystem-text h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #2d5016;
     margin-bottom: 1.5rem;
 }
@@ -589,6 +601,7 @@ body {
     line-height: 1.8;
     color: #444;
     margin-bottom: 1rem;
+    text-align: justify;
 }
 
 .ecosystem-graphic {
