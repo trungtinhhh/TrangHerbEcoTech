@@ -1,0 +1,76 @@
+:root {
+    --header-height: 140px; /* điều chỉnh theo đúng chiều cao header */
+}
+
+/* Reset giống Home */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Container giống Home */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.products {
+    padding-top: calc(var(--header-height) + 20px); /* thêm khoảng cách 20px */
+    padding-bottom: 80px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d5016;
+}
+
+/* Card sản phẩm */
+.products .card {
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.products .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon (emoji) trong card */
+.products .card .display-3 {
+    font-size: 3rem;
+}
+
+/* Tiêu đề card */
+.products .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Nội dung card */
+.products .card-text {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* Badge */
+.products .badge {
+    margin: 0.2rem;
+    font-size: 0.85rem;
+    padding: 0.5em 0.75em;
+    border-radius: 30px;
+}

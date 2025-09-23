@@ -1,0 +1,50 @@
+/* Header */
+.header {
+    /* Gradient mới: từ xanh lá non đến xanh rêu đậm */
+    background: linear-gradient(135deg, #54B435 0%, #36622E 100%);
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    /* Giữ nguyên hiệu ứng làm mờ */
+    backdrop-filter: blur(10px);
+}
+
+/* Trạng thái ẩn */
+.header.hide {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+/* Trạng thái bình thường */
+.header {
+    transition: transform 0.3s ease;
+}
+
+/* Chỉnh màu cho thanh tìm kiếm và nút */
+.header .form-control {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+}
+.header .btn-light {
+    background-color: #F0F4E8;
+    color: #36622E;
+    border: none;
+}
+
+/* Chỉnh màu cho nút Đăng nhập */
+.header .btn-outline-light {
+    color: #F0F4E8;
+    border-color: #F0F4E8;
+}
+
+/* Chỉnh màu cho Menu */
+.navbar.bg-dark {
+    /* Màu nền đậm hơn, gần với màu của đất hoặc xanh rêu sẫm */
+    background-color: #36622E !important;
+}
+
+.navbar-nav .nav-link {
+    color: #F0F4E8 !important;
+}
