@@ -1,50 +1,104 @@
 /* Header */
 .header {
-    /* Gradient mới: từ xanh lá non đến xanh rêu đậm */
-    background: linear-gradient(135deg, #54B435 0%, #36622E 100%);
-    color: white;
+    background: #ffffff; /* Nền trắng */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    /* Giữ nguyên hiệu ứng làm mờ */
     backdrop-filter: blur(10px);
-}
-
-/* Trạng thái ẩn */
-.header.hide {
-    transform: translateY(-100%);
     transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Trạng thái bình thường */
-.header {
-    transition: transform 0.3s ease;
+/* Bố cục chính */
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* Chỉnh màu cho thanh tìm kiếm và nút */
-.header .form-control {
-    background-color: rgba(255, 255, 255, 0.9);
-    border: none;
-}
-.header .btn-light {
-    background-color: #F0F4E8;
-    color: #36622E;
-    border: none;
-}
-
-/* Chỉnh màu cho nút Đăng nhập */
-.header .btn-outline-light {
-    color: #F0F4E8;
-    border-color: #F0F4E8;
-}
-
-/* Chỉnh màu cho Menu */
-.navbar.bg-dark {
-    /* Màu nền đậm hơn, gần với màu của đất hoặc xanh rêu sẫm */
-    background-color: #36622E !important;
-}
-
+/* Navbar (ở giữa) */
 .navbar-nav .nav-link {
-    color: #F0F4E8 !important;
+    color: #0E2A5B !important; /* Chuyển sang màu xanh dương đậm */
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    /*color: #36622E !important; !* Hiệu ứng hover đổi màu sang xanh lá *!*/
+    transform: translateY(-2px);
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: #0E2A5B; /* Gạch chân màu xanh lá */
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Nút đăng nhập */
+.header .btn-outline-primary {
+    color: #0E2A5B;
+    border-color: #0E2A5B;
+    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    transition: all 0.3s ease; /* Thêm transition cho hiệu ứng */
+}
+.header .btn-outline-primary:hover {
+    background-color: #0E2A5B; /* Nền xanh đậm khi hover */
+    color: #ffffff; /* Chữ trắng khi hover */
+}
+
+/* Nút giỏ hàng */
+.header .btn-success {
+    background-color: #0E2A5B; /* Đổi thành màu xanh dương đậm */
+    color: #ffffff;
+    border: none;
+    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    transition: all 0.3s ease; /* Thêm transition cho hiệu ứng */
+}
+.header .btn-success:hover {
+    background-color: #0E2A5B; /* Hiệu ứng hover đổi màu sang xanh lá */
+}
+
+/* Nút toggle cho mobile */
+.navbar-toggler {
+    border-color: #0E2A5B !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(54, 98, 46, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+/* Điều chỉnh khoảng cách cho màn hình nhỏ */
+@media (max-width: 991.98px) {
+    .header .container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar-brand, .btn-group {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .navbar {
+        width: 100%;
+    }
 }

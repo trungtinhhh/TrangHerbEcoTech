@@ -11,43 +11,11 @@ body {
     overflow-x: hidden;
 }
 
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: white;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-}
-
-.nav-links a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
+/* Các lớp nav cũ không cần dùng nữa với cấu trúc mới */
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #1a4c96 0%, #2d5016 50%, #4a7c23 100%);
+    background: linear-gradient(135deg, #0E2A5B 0%, #36622E 100%); /* Nền gradient mới */
     color: white;
     padding: 120px 2rem 80px;
     text-align: center;
@@ -104,7 +72,7 @@ body {
 }
 
 .cta-primary {
-    background: linear-gradient(45deg, #4a7c23, #90ee90);
+    background: linear-gradient(45deg, #36622E, #4A7C23); /* Gradient nút chính mới */
     color: white;
 }
 
@@ -134,7 +102,7 @@ body {
 .section-title {
     text-align: center;
     font-size: 2.8rem;
-    color: #2d5016;
+    color: #0E2A5B; /* Màu tiêu đề mới */
     font-weight: 700;
 }
 
@@ -171,7 +139,7 @@ body {
 }
 
 .ecosystem-item h3 {
-    color: #2d5016;
+    color: #0E2A5B; /* Màu chữ mới */
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
@@ -184,7 +152,7 @@ body {
 .ecosystem-note {
     text-align: center;
     font-size: 1.2rem;
-    color: #2d5016;
+    color: #0E2A5B; /* Màu chữ mới */
     font-weight: 600;
 }
 
@@ -215,7 +183,7 @@ body {
 
 .product-image {
     height: 200px;
-    background: linear-gradient(135deg, #4a7c23, #90ee90);
+    background: linear-gradient(135deg, #36622E, #4A7C23); /* Gradient mới */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -228,7 +196,7 @@ body {
 }
 
 .product-content h3 {
-    color: #2d5016;
+    color: #0E2A5B; /* Màu chữ mới */
     margin-bottom: 1rem;
     font-size: 1.4rem;
 }
@@ -246,8 +214,8 @@ body {
 }
 
 .benefit-tag {
-    background: #e8f5e8;
-    color: #2d5016;
+    background: #e1f5e1; /* Màu tag mới */
+    color: #36622E;
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
     font-size: 0.9rem;
@@ -272,13 +240,13 @@ body {
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #4a7c23;
+    border-left: 5px solid #36622E; /* Màu viền mới */
 }
 
 .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #2d5016;
+    color: #0E2A5B; /* Màu chữ mới */
     margin-bottom: 0.5rem;
 }
 
@@ -293,7 +261,7 @@ body {
 }
 
 .impact-details h3 {
-    color: #2d5016;
+    color: #0E2A5B; /* Màu chữ mới */
     margin-bottom: 2rem;
     font-size: 1.8rem;
 }
@@ -313,7 +281,7 @@ body {
 }
 
 .impact-item h4 {
-    color: #2d5016;
+    color: #0E2A5B; /* Màu chữ mới */
     margin-bottom: 1rem;
     font-size: 1.2rem;
 }
@@ -339,7 +307,7 @@ body {
 }
 
 .team-info h3 {
-    color: #2d5016;
+    color: #0E2A5B; /* Màu chữ mới */
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
 }
@@ -367,12 +335,12 @@ body {
 }
 
 .team-detail strong {
-    color: #2d5016;
+    color: #0E2A5B; /* Màu chữ mới */
 }
 
 /* Footer */
 .footer {
-    background: #2d5016;
+    background: #0E2A5B; /* Màu nền mới */
     color: white;
     padding: 3rem 0 2rem;
     text-align: center;
@@ -432,7 +400,7 @@ body {
 #hex-cycle-svg .hex-group {
     cursor: pointer;
     transition: transform 0.25s ease;
-    transform-origin: center; /* đảm bảo scale từ tâm */
+    transform-origin: center;
 }
 
 /* Hover: scale toàn bộ group */
@@ -443,7 +411,7 @@ body {
 /* Polygon cơ bản */
 #hex-cycle-svg .hex-polygon {
     fill: #fff;
-    stroke: #28a745;
+    stroke: #36622E; /* Màu mới */
     stroke-width: 4;
     transition: fill 0.25s ease, stroke 0.25s ease;
 }
@@ -451,31 +419,31 @@ body {
 /* Polygon khi hover */
 #hex-cycle-svg .hex-group:hover .hex-polygon {
     fill: #e8f9ea;
-    stroke: #1e7e34;
+    stroke: #36622E;
 }
 
 /* Icon + text mặc định */
 #hex-cycle-svg .hex-label {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    pointer-events: none; /* không ảnh hưởng vùng hover */
+    pointer-events: none;
     transition: fill 0.25s ease, font-weight 0.25s ease;
 }
 
 /* Text khi hover */
 #hex-cycle-svg .hex-group:hover .hex-label {
-    fill: #1e7e34;
+    fill: #0E2A5B; /* Màu mới */
     font-weight: 700;
 }
 
 /* Đường mũi tên giữa các node */
 #hex-cycle-svg .flow {
-    stroke: #28a745;
+    stroke: #36622E; /* Màu mới */
     stroke-width: 4;
     stroke-linecap: round;
     fill: none;
     opacity: 0.98;
 
-    stroke-dasharray: 600;   /* đủ dài để che hết */
+    stroke-dasharray: 600;
     stroke-dashoffset: 600;
     animation: draw 1.2s ease-out forwards;
 }
@@ -488,7 +456,7 @@ body {
 #tooltip-fo div {
     font-size: 14px;
     font-weight: 500;
-    color: #2d5016;
+    color: #0E2A5B; /* Màu mới */
     text-align: center;
     font-family: system-ui, sans-serif;
     word-wrap: break-word;
@@ -496,7 +464,7 @@ body {
 }
 
 #ecosystem {
-    height: 80vh; /* chiếm trọn màn hình */
+    height: 80vh;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
@@ -504,12 +472,12 @@ body {
 
 .ecosystem-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 cột bằng nhau */
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    height: 100%; /* căn vừa trong viewport */
+    height: 100%;
 }
 
 .ecosystem-text {
@@ -521,7 +489,7 @@ body {
 
 .ecosystem-text h2 {
     font-size: 3rem;
-    color: #2d5016;
+    color: #0E2A5B; /* Màu mới */
     margin-bottom: 1.5rem;
 }
 
@@ -547,6 +515,7 @@ body {
 section {
     scroll-margin-top: 120px;
 }
+
 /* Contact Advice Section */
 .contact-advice {
     background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
@@ -558,12 +527,12 @@ section {
     text-align: center;
     font-size: 2rem;
     font-weight: 700;
-    color: #2d5016;
+    color: #0E2A5B; /* Màu mới */
     margin-bottom: 30px;
 }
 
 .contact-form {
-    max-width: 700px;   /* nhỏ gọn ở giữa */
+    max-width: 700px;
     margin: 0 auto;
     background: #fff;
     padding: 2rem;
@@ -579,8 +548,8 @@ section {
 }
 
 .contact-form .form-control:focus {
-    border-color: #4a7c23;
-    box-shadow: 0 0 6px rgba(74,124,35,0.4);
+    border-color: #36622E; /* Màu focus mới */
+    box-shadow: 0 0 6px rgba(54,98,46,0.4);
 }
 
 .contact-form textarea {
@@ -605,4 +574,3 @@ section {
         max-width: 100%;
     }
 }
-
