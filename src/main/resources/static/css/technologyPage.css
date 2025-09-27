@@ -18,7 +18,7 @@ body {
 
 /* Container giống Home */
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 1rem;
 }
@@ -32,7 +32,8 @@ body {
 
 /* Technology Section */
 .technology {
-    background: linear-gradient(135deg, #2d5016 0%, #1a4c96 100%);
+    /*background: linear-gradient(135deg, #2d5016 0%, #1a4c96 100%);*/
+    background: linear-gradient(180deg, #e8f5e9 0%, #ffffff 100%);
     color: white;
     padding-top: calc(var(--header-height) + 20px); /* thêm khoảng cách 20px */
     padding-bottom: 80px;
@@ -40,39 +41,45 @@ body {
     padding-right: 2rem;
 }
 
-.tech-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
+.technology h3 {
+    color: #2d5016;
+    font-weight: 700;
+    margin-bottom: 15px;
 }
-
-.tech-card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
+.technology p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
 }
-
-.tech-card:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-5px);
+.technology img {
+    object-fit: cover;
+    width: 100%;
+    height: 220px;
 }
-
-.tech-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    display: block;
+/* Hover ảnh */
+.technology img {
+    transition: transform .3s ease, box-shadow .3s ease;
 }
-
-.tech-card h3 {
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
+.technology img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.25);
 }
-
-.tech-card p {
-    opacity: 0.9;
-    line-height: 1.6;
+/* Tiêu đề hiệu ứng underline */
+.technology h3 {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.technology h3::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: #28a745;
+    transition: width .3s ease;
+}
+.technology h3:hover::after {
+    width: 100%;
 }
