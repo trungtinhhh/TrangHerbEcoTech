@@ -20,4 +20,19 @@ public class HomeController {
     public String technologyPage() {
         return "technologyPage";
     }
+
+    @GetMapping("/about")
+    public String aboutPage() {
+        return "aboutPage";
+    }
+
+    @GetMapping("/contact")
+    public String contactPage() {
+        return "contactPage";
+    }
+
+    @GetMapping("/guide")
+    public String guidePage() {
+        return "guidePage";
+    }
 }

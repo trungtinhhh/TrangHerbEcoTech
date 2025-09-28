@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thuận Thiên Mekong - Flipbook A4</title>
+
+    <style>
+        /* Thêm mặt sau để khi lật không thấy chữ ngược */
+        .page {
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease;
+        }
+
+        /* Khi lật trang bên trái */
+        .page.left.flipped {
+            transform: rotateY(180deg);
+            z-index: 1;
+        }
+
+        /* Khi lật trang bên phải */
+        .page.right.flipped {
+            transform: rotateY(-180deg);
+            z-index: 1;
+        }
+
+        /* Đảm bảo trang chưa lật nằm trên */
+        .page:not(.flipped) {
+            z-index: 2;
+        }
+
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e8, #d4edda);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .flipbook-wrapper {
+            perspective: 2000px;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        #flipbook {
+            width: 1200px;
+            height: 480px; /* chỉnh chiều cao */
+            margin: 0 auto;
+            position: relative;
+            transform-style: preserve-3d;
+            border-radius: 10px;
+            transform-origin: center;
+            transition: transform 0.5s ease;
+        }
+
+        #flipbook.single-page {
+            width: 600px;
+        }
+
+        .spread {
+            width: 1200px;
+            height: 480px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-style: preserve-3d;
+            transform-origin: center;
+        }
+
+        .page {
+            width: 600px;
+            height: 480px;
+            background: #ffffff;
+            position: absolute;
+            top: 0;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            cursor: pointer;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        .page.left { left: 0; transform-origin: right center; }
+        .page.right { right: 0; transform-origin: left center; }
+        .page.single { left: 0; transform-origin: center; }
+
+        .page-number {
+            position: absolute;
+            bottom: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .page.left .page-number { left: 20px; }
+        .page.right .page-number { right: 20px; }
+
+        /* Ẩn controls */
+        .controls { display: none; }
+
+        .page-counter {
+            background: rgba(255,255,255,0.95);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: #2d5016;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="flipbook-wrapper">
+    <div id="flipbook" class="single-page">
+
+        <!-- Spread 0: Bìa -->
+        <div class="spread" data-spread="0">
+            <div class="page single" data-page="cover">
+                <h1>🌾 Thuận Thiên Mekong</h1>
+                <h3>📖 Cẩm Nang Cho Nhà Nông<br>Từ truyền thống đến hiện đại</h3>
+                <div style="background: linear-gradient(135deg, #4a7c23, #90ee90); height: 200px; border-radius: 15px; margin: 20px 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 2em;">
+                    🌾🏞️
+                </div>
+                <p style="text-align: center; font-style: italic; color: #666; margin-top: 20px;">
+                    "Nông nghiệp bền vững - Vì sức khỏe, vì môi trường, vì tương lai con cháu"
+                </p>
+            </div>
+        </div>
+
+        <!-- Spread 1: Lời ngỏ + Điều kiện tự nhiên -->
+        <div class="spread" data-spread="1" style="display: none;">
+            <!-- Trang trái -->
+            <div class="page left" data-page="intro">
+                <h2>📝 Lời ngỏ</h2>
+                <p>Đồng bằng sông Cửu Long từ lâu được biết đến là "vựa lúa", "vựa trái cây" và "vựa cá"...</p>
+                <div class="box-tip">🌱 <strong>Mục lục chính:</strong> ...</div>
+            </div>
+            <!-- Trang phải -->
+            <div class="page right" data-page="natural">
+                <h2>🌍 Điều kiện tự nhiên vùng Mekong</h2>
+                <p>Đồng bằng sông Cửu Long được thiên nhiên ưu đãi...</p>
+                <div class="box-tip">📌 <strong>Kinh nghiệm dân gian:</strong> ...</div>
+                <div class="page-number">1</div>
+            </div>
+        </div>
+
+        <!-- Spread 2 -->
+        <div class="spread" data-spread="2" style="display: none;">
+            <!-- Trang trái -->
+            <div class="page left" data-page="production">
+                <h2>🌾 Sản xuất nông nghiệp chủ lực</h2>
+                <p>Vùng Đồng bằng sông Cửu Long là vựa lúa lớn nhất cả nước...</p>
+                <div class="box-tip">📌 <strong>Nguyên tắc đa dạng hóa:</strong> ...</div>
+                <div class="page-number">2</div>
+            </div>
+            <!-- Trang phải -->
+            <div class="page right" data-page="climate">
+                <h2>🌊 Biến đổi khí hậu và thách thức</h2>
+                <p>Biến đổi khí hậu đang tác động mạnh...</p>
+                <div class="box-tip">📌 <strong>Giải pháp thích ứng:</strong> ...</div>
+                <div class="page-number">3</div>
+            </div>
+        </div>
+
+        <!-- Spread 3 -->
+        <div class="spread" data-spread="3" style="display: none;">
+            <div class="page left" data-page="technology">
+                <h2>💡 Giống mới & Công nghệ canh tác</h2>
+                <p>Ứng dụng tiến bộ khoa học kỹ thuật...</p>
+                <div class="box-tip">📌 <strong>Chiến lược triển khai:</strong> ...</div>
+                <div class="page-number">4</div>
+            </div>
+            <div class="page right" data-page="market">
+                <h2>🏪 Thị trường & Hội nhập</h2>
+                <p>Phát triển thị trường tiêu thụ sản phẩm...</p>
+                <div class="box-tip">📌 <strong>Bí quyết marketing:</strong> ...</div>
+                <div class="page-number">5</div>
+            </div>
+        </div>
+
+        <!-- Spread 4 -->
+        <div class="spread" data-spread="4" style="display: none;">
+            <div class="page left" data-page="policy">
+                <h2>🏛️ Chính sách & Hỗ trợ</h2>
+                <p>Nhà nước có nhiều chính sách hỗ trợ...</p>
+                <div class="box-tip">📌 <strong>Cách tiếp cận hỗ trợ:</strong> ...</div>
+                <div class="page-number">6</div>
+            </div>
+            <div class="page right" data-page="circular">
+                <h2>🔄 Nông nghiệp tuần hoàn</h2>
+                <p>Mô hình nông nghiệp tuần hoàn...</p>
+                <div class="box-tip">📌 <strong>Triết lý tuần hoàn:</strong> ...</div>
+                <div class="page-number">7</div>
+            </div>
+        </div>
+
+        <!-- Spread 5 -->
+        <div class="spread" data-spread="5" style="display: none;">
+            <div class="page left" data-page="ecosystem">
+                <h2>🦋 Hệ sinh thái & Động vật có ích</h2>
+                <p>Bảo vệ và khai thác hệ sinh thái...</p>
+                <div class="box-tip">📌 <strong>Bảo vệ thiên nhiên:</strong> ...</div>
+                <div class="page-number">8</div>
+            </div>
+            <div class="page right" data-page="organic">
+                <h2>♻️ Phân hữu cơ & Tái sử dụng</h2>
+                <p>Tận dụng phế phẩm nông nghiệp...</p>
+                <div class="box-tip">📌 <strong>Tư duy tuần hoàn:</strong> ...</div>
+                <div class="page-number">9</div>
+            </div>
+        </div>
+
+        <!-- Spread 6 -->
+        <div class="spread" data-spread="6" style="display: none;">
+            <div class="page left" data-page="ecological">
+                <h2>🌿 Nông nghiệp sinh thái - Thuận thiên</h2>
+                <p>Canh tác theo quy luật tự nhiên...</p>
+                <div class="box-tip">🌿 <strong>Triết lý Á Đông:</strong> ...</div>
+                <div class="page-number">10</div>
+            </div>
+            <div class="page right" data-page="microorganisms">
+                <h2>🦠 Vi sinh vật phân giải bản địa</h2>
+                <p>Indigenous Microorganisms (IMO)...</p>
+                <div class="box-tip">📌 <strong>Lợi ích IMO:</strong> ...</div>
+                <div class="page-number">11</div>
+            </div>
+        </div>
+
+        <!-- Spread 7 -->
+        <div class="spread" data-spread="7" style="display: none;">
+            <div class="page left" data-page="indigenous">
+                <h2>🐛 Động vật bản địa bổ sung</h2>
+                <p>Khai thác và bảo vệ các loài...</p>
+                <div class="box-tip">📌 <strong>Giá trị đa dạng sinh học:</strong> ...</div>
+                <div class="page-number">12</div>
+            </div>
+            <div class="page right" data-page="future">
+                <h2>🚀 Kết nối & Tương lai</h2>
+                <p>"Thuận Thiên Mekong" không chỉ là triết lý...</p>
+                <div class="box-tip">📌 <strong>Thông điệp cuối:</strong> ...</div>
+                <div class="page-number">13</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page-counter">
+        <span id="currentSpread">1</span> / <span id="totalSpreads">8</span>
+    </div>
+</div>
+
+<script>
+    class FlipBook {
+        constructor() {
+            this.spreads = document.querySelectorAll('.spread');
+            this.currentSpread = 0;
+            this.totalSpreads = this.spreads.length;
+            this.flipbook = document.getElementById('flipbook');
+            this.init();
+        }
+
+        init() {
+            this.updateDisplay();
+            this.spreads.forEach((spread) => {
+                const pages = spread.querySelectorAll('.page');
+                pages.forEach(page => {
+                    page.addEventListener('click', () => {
+                        if (this.currentSpread === 0) {
+                            // Trang bìa → sang spread tiếp theo
+                            page.classList.add("flipped");
+                            setTimeout(() => this.nextSpread(), 600);
+                        } else {
+                            if (page.classList.contains("right")) {
+                                page.classList.add("flipped");
+                                setTimeout(() => this.nextSpread(), 600);
+                            } else if (page.classList.contains("left")) {
+                                page.classList.add("flipped");
+                                setTimeout(() => this.previousSpread(), 600);
+                            }
+                        }
+                    });
+                });
+            });
+        }
+
+        nextSpread() {
+            if (this.currentSpread < this.totalSpreads - 1) {
+                this.currentSpread++;
+                this.updateDisplay();
+            }
+        }
+
+        previousSpread() {
+            if (this.currentSpread > 0) {
+                this.currentSpread--;
+                this.updateDisplay();
+            }
+        }
+
+        updateDisplay() {
+            this.spreads.forEach((spread, idx) => {
+                spread.style.display = (idx === this.currentSpread) ? 'block' : 'none';
+                // Reset trạng thái lật khi hiển thị lại
+                spread.querySelectorAll('.page').forEach(p => p.classList.remove("flipped"));
+            });
+
+            if (this.currentSpread === 0) {
+                this.flipbook.classList.add('single-page');
+            } else {
+                this.flipbook.classList.remove('single-page');
+            }
+
+            document.getElementById('currentSpread').textContent = this.currentSpread + 1;
+            document.getElementById('totalSpreads').textContent = this.totalSpreads;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => new FlipBook());
+</script>
+
+
+</body>
+</html>

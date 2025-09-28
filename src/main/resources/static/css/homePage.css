@@ -654,3 +654,124 @@ section {
     font-size: 1.1rem;
     line-height: 1.8;
 }
+
+/* Team Section */
+#team {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #0E2A5B 0%, #36622E 100%); /* Nền gradient mới */
+    color: white;
+}
+
+#team .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2d5016;
+    margin-bottom: 2rem;
+}
+
+/* Card chung */
+.team-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #000;
+}
+
+.team-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* Ảnh portrait giữ tỉ lệ 1080x1920 */
+.team-photo-portrait {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;    /* cắt vừa khung */
+    object-position: top; /* ưu tiên phần trên của ảnh */
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.team-card:hover .team-photo-portrait {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Overlay tên + chức danh */
+.team-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.8rem;
+    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
+    color: white;
+    text-align: center;
+}
+
+.team-overlay h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.team-overlay p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Mentor nổi bật */
+.mentor-card {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+}
+
+.mentor-card .team-photo-portrait {
+    width: 100%;
+    height: 500px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    #team {
+        padding: 60px 0;
+    }
+
+    .team-photo-portrait {
+        aspect-ratio: auto;
+        height: 400px; /* cố định cao hơn trên tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    #team {
+        display: block;
+        min-height: auto;
+    }
+
+    .mentor-card {
+        margin-bottom: 2rem;
+    }
+
+    .team-photo-portrait {
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-photo-portrait {
+        height: 280px;
+    }
+
+    .team-overlay h4 {
+        font-size: 1rem;
+    }
+
+    .team-overlay p {
+        font-size: 0.9rem;
+    }
+}

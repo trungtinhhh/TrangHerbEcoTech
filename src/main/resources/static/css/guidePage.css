@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e8f5e8, #d4edda);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.flipbook-wrapper {
+    perspective: 2000px;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+#flipbook {
+    /* Kích thước A4 tỷ lệ 1:1.414 (210:297mm) */
+    /* Thu nhỏ toàn bộ flipbook bằng transform scale */
+    width: 600px;
+    height: 850px;
+    margin: 0 auto;
+    position: relative;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+    transform: scale(0.53); /* 450/850 = 0.53 */
+    transform-origin: center;
+}
+
+.page {
+    width: 600px;
+    height: 850px;
+    background: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 40px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    transform-origin: left center;
+    transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+}
+
+.page.flipped {
+    transform: rotateY(-180deg);
+    z-index: 1;
+}
+
+.page:not(.flipped) {
+    z-index: 2;
+}
+
+.page:hover {
+    box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+}
+
+.page h1 {
+    color: #2d5016;
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.page h2 {
+    color: #2d5016;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 3px solid #4a7c23;
+    padding-bottom: 10px;
+}
+
+.page h3 {
+    color: #4a7c23;
+    text-align: center;
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.page p {
+    text-align: justify;
+    line-height: 1.8;
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.box-tip {
+    background: linear-gradient(135deg, #f0f8f0, #e8f5e8);
+    border-left: 5px solid #4a7c23;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 0 10px 10px 0;
+    font-weight: 600;
+    color: #2d5016;
+    box-shadow: 0 4px 15px rgba(74, 124, 35, 0.1);
+}
+
+.page-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.page-image:hover {
+    transform: scale(1.05);
+}
+
+.cover-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 30px 0;
+}
+
+.controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    pointer-events: none;
+}
+
+.nav-btn {
+    background: linear-gradient(135deg, #4a7c23, #90ee90);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(74, 124, 35, 0.3);
+    pointer-events: all;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(74, 124, 35, 0.4);
+}
+
+.nav-btn:active {
+    transform: scale(1.05);
+}
+
+.nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.page-counter {
+    background: rgba(255,255,255,0.95);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #2d5016;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #flipbook {
+        transform: scale(0.4);
+    }
+
+    .controls {
+        padding: 0 10px;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .page-counter {
+        font-size: 0.9em;
+    }
+}
+
+/* Animation effects */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page {
+    animation: fadeIn 0.6s ease-out;
+}
