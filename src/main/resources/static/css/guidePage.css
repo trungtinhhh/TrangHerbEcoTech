@@ -4,21 +4,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 :root {
-    --header-height: 140px; /* điều chỉnh theo đúng chiều cao header */
+    --header-height: 140px;
 }
-/* Toàn trang chia cột: header - content - footer */
+
 body {
     min-height: 100vh;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: powderblue;
+    background: linear-gradient(180deg, #e8f5e9 0%, #ffffff 100%);
+    background-attachment: fixed;
     overflow-x: hidden;
-
 }
-
 
 /* Container giống Home */
 .container {
@@ -44,6 +44,7 @@ body {
     top: 0;
     left: 0;
     perspective: 1500px;
+    /* Loại bỏ hard-code z-index, sẽ được set bởi JavaScript */
 }
 
 .front,
@@ -108,23 +109,23 @@ button:focus {
     font-size: 50px;
     color: gray;
 }
+
 .guide-section {
-    flex: 1;                     /* chiếm khoảng trống giữa header và footer */
+    flex: 1;
     display: flex;
-    justify-content: center;     /* căn ngang */
-    align-items: center;         /* căn dọc */
+    justify-content: center;
+    align-items: center;
     min-height: calc(100vh - var(--header-height) - var(--footer-height, 0px));
-    padding-top: calc(var(--header-height) + 20px); /* thêm khoảng cách 20px */
+    padding-top: calc(var(--header-height) + 20px);
     padding-bottom: 80px;
     padding-left: 2rem;
     padding-right: 2rem;
-    background: linear-gradient(180deg, #e8f5e9 0%, #ffffff 100%);
 }
 
 .flipbook-wrapper {
     display: flex;
-    align-items: center;   /* căn dọc giữa */
-    gap: 20px;             /* khoảng cách giữa nút và sách */
+    align-items: center;
+    gap: 20px;
 }
 
 .nav-btn {
@@ -143,8 +144,20 @@ button:focus {
     color: #636363;
 }
 
+/* Trong guidePage.css */
+.front-content,
+.back-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
 
-/* Paper stack order */
-#p1 { z-index: 3; }
-#p2 { z-index: 2; }
-#p3 { z-index: 1; }
+/* Thu nhỏ toàn bộ group HTML với tỷ lệ đồng đều */
+.front-content .book-spread,
+.back-content .book-spread {
+    transform: scale(0.45);
+    transform-origin: center;
+}

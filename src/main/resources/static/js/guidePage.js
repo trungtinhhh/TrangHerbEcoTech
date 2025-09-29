@@ -3,18 +3,26 @@ const prevBtn = document.querySelector("#prev-btn");
 const nextBtn = document.querySelector("#next-btn");
 const book = document.querySelector("#book");
 
-const paper1 = document.querySelector("#p1");
-const paper2 = document.querySelector("#p2");
-const paper3 = document.querySelector("#p3");
+// Get all paper elements dynamically
+const papers = document.querySelectorAll('.paper');
+const numOfPapers = papers.length;
+const maxLocation = numOfPapers + 1;
 
-// Event Listener
+console.log(`Detected ${numOfPapers} papers`);
+
+// Event Listeners
 prevBtn.addEventListener("click", goPrevPage);
 nextBtn.addEventListener("click", goNextPage);
 
 // Business Logic
 let currentLocation = 1;
-let numOfPapers = 3;
-let maxLocation = numOfPapers + 1;
+
+// Khởi tạo z-index ban đầu cho tất cả papers
+function initializeZIndex() {
+    papers.forEach((paper, index) => {
+        paper.style.zIndex = numOfPapers - index;
+    });
+}
 
 function openBook() {
     book.style.transform = "translateX(50%)";
@@ -35,49 +43,45 @@ function closeBook(isAtBeginning) {
 
 function goNextPage() {
     if(currentLocation < maxLocation) {
-        switch(currentLocation) {
-            case 1:
-                openBook();
-                paper1.classList.add("flipped");
-                paper1.style.zIndex = 1;
-                break;
-            case 2:
-                paper2.classList.add("flipped");
-                paper2.style.zIndex = 2;
-                break;
-            case 3:
-                paper3.classList.add("flipped");
-                paper3.style.zIndex = 3;
-                closeBook(false);
-                break;
-            default:
-                throw new Error("unkown state");
+        const paperToFlip = currentLocation - 1; // Paper cần lật
+        console.log(`Going to page ${currentLocation + 1}, flipping paper ${paperToFlip}`);
+
+        // Animation lật paper
+        if(currentLocation === 1) {
+            openBook();
+        } else if(currentLocation === maxLocation - 1) {
+            closeBook(false);
         }
+
+        papers[paperToFlip].classList.add("flipped");
+        papers[paperToFlip].style.zIndex = 1; // Paper đã lật có z-index thấp nhất
+
+        // Chuyển trang sau khi animation
         currentLocation++;
     }
 }
 
 function goPrevPage() {
     if(currentLocation > 1) {
-        switch(currentLocation) {
-            case 2:
-                closeBook(true);
-                paper1.classList.remove("flipped");
-                paper1.style.zIndex = 3;
-                break;
-            case 3:
-                paper2.classList.remove("flipped");
-                paper2.style.zIndex = 2;
-                break;
-            case 4:
-                openBook();
-                paper3.classList.remove("flipped");
-                paper3.style.zIndex = 1;
-                break;
-            default:
-                throw new Error("unkown state");
+        const paperToUnflip = currentLocation - 2; // Paper cần unflip
+        console.log(`Going back to page ${currentLocation - 1}, unflipping paper ${paperToUnflip}`);
+
+        // Animation unflip paper
+        if(currentLocation === 2) {
+            closeBook(true);
+        } else if(currentLocation === maxLocation) {
+            openBook();
         }
 
+        papers[paperToUnflip].classList.remove("flipped");
+        papers[paperToUnflip].style.zIndex = numOfPapers - paperToUnflip; // Khôi phục z-index ban đầu
+
+        // Chuyển trang sau khi animation
         currentLocation--;
     }
 }
+
+// Khởi tạo z-index khi trang được load
+document.addEventListener('DOMContentLoaded', function() {
+    initializeZIndex();
+});

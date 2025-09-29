@@ -1,12 +1,12 @@
 /* Header */
 .header {
     background: #ffffff;
-    position: fixed; /* Đặt header cố định trên màn hình */
+    position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     backdrop-filter: blur(10px);
-    transition: transform 0.3s ease-in-out; /* Chỉ chuyển động transform để hiệu ứng mượt mà hơn */
+    transition: transform 0.3s ease-in-out;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -24,7 +24,7 @@
 
 /* Navbar (ở giữa) */
 .navbar-nav .nav-link {
-    color: #0E2A5B !important; /* Chuyển sang màu xanh dương đậm */
+    color: #0E2A5B !important;
     font-weight: 600;
     padding: 0.75rem 1.25rem;
     font-size: 1.1rem;
@@ -33,7 +33,6 @@
 }
 
 .navbar-nav .nav-link:hover {
-    /*color: #36622E !important; !* Hiệu ứng hover đổi màu sang xanh lá *!*/
     transform: translateY(-2px);
 }
 
@@ -44,7 +43,7 @@
     left: 50%;
     width: 0;
     height: 3px;
-    background-color: #0E2A5B; /* Gạch chân màu xanh lá */
+    background-color: #0E2A5B;
     transition: width 0.3s ease, left 0.3s ease;
 }
 
@@ -53,10 +52,27 @@
     left: 0;
 }
 
+/* Style cho trang hiện tại (active) */
+.navbar-nav .nav-link.active {
+    color: #0E2A5B !important;
+    font-weight: 700; /* Đậm hơn một chút */
+}
+
+.navbar-nav .nav-link.active::after {
+    width: 100%;
+    left: 0;
+    background-color: #0E2A5B;
+}
+
+/* Đảm bảo active state không bị ảnh hưởng bởi hover */
+.navbar-nav .nav-link.active:hover {
+    transform: none; /* Không có hiệu ứng di chuyển lên */
+}
+
 /* Nút đăng nhập */
 .header .btn-outline-primary {
-    background-color: #ffffff; /* Nền trắng */
-    color: #0E2A5B; /* Chữ xanh dương đậm */
+    background-color: #ffffff;
+    color: #0E2A5B;
     border-color: #0E2A5B;
     font-weight: 500;
     padding: 0.6rem 1.2rem;
@@ -67,7 +83,6 @@
     transition: all 0.3s ease;
 }
 
-/* Hiệu ứng lướt ngang cho nút đăng nhập */
 .header .btn-outline-primary::before {
     content: '';
     position: absolute;
@@ -75,7 +90,7 @@
     left: 0;
     width: 0;
     height: 100%;
-    background-color: #0E2A5B; /* Màu nền khi hover là xanh dương đậm */
+    background-color: #0E2A5B;
     transition: width 0.3s ease;
     z-index: -1;
 }
@@ -85,7 +100,7 @@
 }
 
 .header .btn-outline-primary:hover {
-    color: #ffffff; /* Chuyển màu chữ sang trắng khi hover */
+    color: #ffffff;
 }
 
 /* Nút giỏ hàng */
@@ -102,7 +117,6 @@
     transition: all 0.3s ease;
 }
 
-/* Hiệu ứng lướt ngang cho nút giỏ hàng */
 .header .btn-success::before {
     content: '';
     position: absolute;
@@ -112,7 +126,7 @@
     height: 100%;
     background-color: #ffffff;
     transition: width 0.3s ease;
-    z-index: -1; /* Đặt lại z-index để nó nằm dưới nội dung */
+    z-index: -1;
 }
 
 .header .btn-success:hover::before {
