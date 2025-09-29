@@ -21,7 +21,8 @@
 </head>
 <body>
 <!-- Header -->
-<header th:replace="fragments/header :: header"></header>
+<div th:replace="~{fragments/header :: header}"></div>
+
 
 <!-- Hero Section -->
 <section class="hero-about text-center">
@@ -62,7 +63,7 @@
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <h3>Tầm nhìn</h3>
-                <p style="font-size: 1.2rem; font-weight:400"
+                <p style="font-size: 1.2rem; font-weight:400">
                     Trở thành đơn vị tiên phong trong phát triển hệ sinh thái
                     <strong>Agritech – Medicaponic</strong> tại Việt Nam, hướng đến mục tiêu Net Zero 2050.
                     TrangHerb EcoTech không chỉ sản xuất thực phẩm sạch, mà còn kết nối công nghệ AI/IoT,
@@ -136,7 +137,8 @@
     </div>
 </section>
 
-<footer th:replace="fragments/footer :: site-footer"></footer>
+<div th:replace="~{fragments/footer :: footer}"></div>
+
 
 <script th:src="@{/js/homePage.js}"></script>
 <script th:src="@{/js/header.js}"></script>

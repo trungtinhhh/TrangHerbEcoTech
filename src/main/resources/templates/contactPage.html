@@ -21,7 +21,8 @@
 </head>
 <body>
 <!-- Header -->
-<header th:replace="fragments/header :: header"></header>
+<div th:replace="~{fragments/header :: header}"></div>
+
 
 <!-- Hero Section -->
 <section class="hero-contact text-center text-white">
@@ -74,7 +75,8 @@
 </section>
 
 <!-- Footer -->
-<footer th:replace="fragments/footer :: footer"></footer>
+<div th:replace="~{fragments/footer :: footer}"></div>
+
 
 <!-- JS -->
 <script th:src="@{/js/homePage.js}"></script>

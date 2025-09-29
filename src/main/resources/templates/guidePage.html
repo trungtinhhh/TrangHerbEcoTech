@@ -27,7 +27,8 @@
 </head>
 <body style="padding-right: 0; padding-left: 0">
 <!-- Header -->
-<header th:replace="fragments/header :: site-header"></header>
+<div th:replace="~{fragments/header :: header}"></div>
+
 <!-- Flipbook Section -->
 <section class="guide-section">
     <div class="flipbook-wrapper">
@@ -58,7 +59,8 @@
 </section>
 
 
-<footer th:replace="fragments/footer :: site-footer"></footer>
+<div th:replace="~{fragments/footer :: footer}"></div>
+
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script th:src="@{/js/guidePage.js}"></script>

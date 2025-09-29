@@ -21,7 +21,7 @@
 </head>
 <body>
 <!-- Header -->
-<header th:replace="fragments/header :: site-header"></header>
+<div th:replace="~{fragments/header :: header}"></div>
 
 <!-- Products Section -->
 <section class="section products">
@@ -111,7 +111,8 @@
     </div>
 </section>
 
-<footer th:replace="fragments/footer :: site-footer"></footer>
+<div th:replace="~{fragments/footer :: footer}"></div>
+
 
 <script th:src="@{/js/header.js}"></script>
 
