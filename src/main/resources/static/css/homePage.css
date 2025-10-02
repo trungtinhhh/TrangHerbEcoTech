@@ -583,52 +583,52 @@ section {
     scroll-margin-top: 120px;
 }
 
-/* Contact Advice Section */
-.contact-advice {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
-    padding-top: 40px;
-    padding-bottom: 50px;
+/* Hiệu ứng label nổi */
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
 }
 
-.contact-advice .contact-title {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #0E2A5B; /* Màu mới */
-    margin-bottom: 30px;
-}
-
-.contact-form {
-    max-width: 700px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.contact-form .form-control {
-    border-radius: 10px;
+.form-input {
+    width: 100%;
+    padding: 14px;
     border: 1px solid #ccc;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
+    border-radius: 6px;
+    background: none;
+    font-size: 16px;
+    transition: all 0.2s ease;
 }
 
-.contact-form .form-control:focus {
-    border-color: #36622E; /* Màu focus mới */
-    box-shadow: 0 0 6px rgba(54,98,46,0.4);
-}
-
-.contact-form textarea {
+textarea.form-input {
     resize: vertical;
-    border-radius: 12px;
 }
 
-.contact-form button {
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-top: 15px;
+.form-label {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    color: #777;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    background-color: #fff;
+    padding: 0 4px;
+}
+
+.form-input:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40,167,69,0.15);
+}
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+    transform: translateY(-24px) scale(0.9);
+    color: #28a745;
+}
+
+/* Tiêu đề form */
+.contact-title {
+    font-size: 2.8rem;
+    color: #0E2A5B;
 }
 
 /* Responsive */

@@ -184,37 +184,52 @@
 </section>
 
 <!-- Liên hệ tư vấn -->
-<section id="contact-advice" class="contact-advice">
+<section id="contact-advice" class="contact-advice py-5 bg-light">
     <div class="container">
-        <h2 class="contact-title">Liên hệ tư vấn</h2>
-        <form class="contact-form">
-            <div class="row g-3">
-                <!-- Hàng 1 -->
+        <h2 class="contact-title text-center mb-5 fw-bold">Liên hệ tư vấn</h2>
+        <form class="contact-form mx-auto shadow-lg p-4 rounded-4 bg-white" style="max-width: 800px;">
+            <div class="row g-4">
+                <!-- Họ và tên -->
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Họ và tên" required>
-                </div>
-                <div class="col-md-6">
-                    <input type="tel" class="form-control" placeholder="Số điện thoại" required>
+                    <div class="form-group position-relative">
+                        <input type="text" id="fullname" class="form-input form-control" placeholder=" " required>
+                        <label for="fullname" class="form-label">Họ và tên</label>
+                    </div>
                 </div>
 
-                <!-- Hàng 2 -->
-                <div class="col-12">
-                    <input type="email" class="form-control" placeholder="Email" required>
+                <!-- Số điện thoại -->
+                <div class="col-md-6">
+                    <div class="form-group position-relative">
+                        <input type="tel" id="phone" class="form-input form-control" placeholder=" " required>
+                        <label for="phone" class="form-label">Số điện thoại</label>
+                    </div>
                 </div>
 
-                <!-- Hàng 3 -->
+                <!-- Email -->
                 <div class="col-12">
-                    <textarea class="form-control" rows="5" placeholder="Vấn đề của bạn là..." required></textarea>
+                    <div class="form-group position-relative">
+                        <input type="email" id="email" class="form-input form-control" placeholder=" " required>
+                        <label for="email" class="form-label">Email</label>
+                    </div>
+                </div>
+
+                <!-- Nội dung -->
+                <div class="col-12">
+                    <div class="form-group position-relative">
+                        <textarea id="message" class="form-input form-control" rows="5" placeholder=" " required></textarea>
+                        <label for="message" class="form-label">Vấn đề của bạn là...</label>
+                    </div>
                 </div>
 
                 <!-- Nút gửi -->
                 <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-success px-5 py-2">Gửi</button>
+                    <button type="submit" class="btn btn-success px-5 py-2 fw-semibold">Gửi</button>
                 </div>
             </div>
         </form>
     </div>
 </section>
+
 
 <!--<footer th:replace="fragments/footer :: site-footer"></footer>-->
 <div th:replace="~{fragments/footer :: footer}"></div>

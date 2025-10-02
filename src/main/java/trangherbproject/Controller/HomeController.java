@@ -80,7 +80,6 @@ public class HomeController {
 
         for (int i = 0; i < files.length; i++) {
             String[] pair = files[i];
-            System.out.println("Paper " + (i+1) + ": " + pair[0] + " -> " + pair[1]);
             String front = readHtmlFile("/templates/guide/" + pair[0]);
             String back = readHtmlFile("/templates/guide/" + pair[1]);
             pages.add(new Page(front, back));
