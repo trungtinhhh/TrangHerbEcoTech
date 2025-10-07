@@ -187,52 +187,97 @@
 <section id="contact-advice" class="contact-advice py-5 bg-light">
     <div class="container">
         <h2 class="contact-title text-center mb-5 fw-bold">Liên hệ tư vấn</h2>
-        <form class="contact-form mx-auto shadow-lg p-4 rounded-4 bg-white" style="max-width: 800px;">
+        <form th:action="@{/support}" method="post" class="contact-form mx-auto shadow-lg p-4 rounded-4 bg-white" style="max-width: 800px;">
             <div class="row g-4">
-                <!-- Họ và tên -->
                 <div class="col-md-6">
                     <div class="form-group position-relative">
-                        <input type="text" id="fullname" class="form-input form-control" placeholder=" " required>
+                        <input type="text" id="fullname" name="fullname" class="form-input form-control" placeholder=" " required>
                         <label for="fullname" class="form-label">Họ và tên</label>
                     </div>
                 </div>
 
-                <!-- Số điện thoại -->
                 <div class="col-md-6">
                     <div class="form-group position-relative">
-                        <input type="tel" id="phone" class="form-input form-control" placeholder=" " required>
+                        <input type="tel" id="phone" name="phone" class="form-input form-control" placeholder=" " required>
                         <label for="phone" class="form-label">Số điện thoại</label>
                     </div>
                 </div>
 
-                <!-- Email -->
                 <div class="col-12">
                     <div class="form-group position-relative">
-                        <input type="email" id="email" class="form-input form-control" placeholder=" " required>
+                        <input type="email" id="email" name="email" class="form-input form-control" placeholder=" " required>
                         <label for="email" class="form-label">Email</label>
                     </div>
                 </div>
 
-                <!-- Nội dung -->
                 <div class="col-12">
                     <div class="form-group position-relative">
-                        <textarea id="message" class="form-input form-control" rows="5" placeholder=" " required></textarea>
+                        <textarea id="message" name="message" class="form-input form-control" rows="5" placeholder=" " required></textarea>
                         <label for="message" class="form-label">Vấn đề của bạn là...</label>
                     </div>
                 </div>
 
-                <!-- Nút gửi -->
                 <div class="col-12 text-center">
                     <button type="submit" class="btn btn-success px-5 py-2 fw-semibold">Gửi</button>
                 </div>
             </div>
+
+            <!-- Toast thông báo -->
+            <div aria-live="polite" aria-atomic="true" class="position-relative">
+                <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+                    <!-- Thành công -->
+                    <div th:if="${success}" class="toast align-items-center text-bg-success border-0 shadow-lg toast-success-custom" id="toastSuccess" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex align-items-center">
+                            <div class="toast-icon bg-white rounded-circle me-3 d-flex align-items-center justify-content-center">
+                                <i class="bi bi-check2-circle text-success fs-4"></i>
+                            </div>
+                            <div class="toast-body fw-semibold">
+                                Gửi thành công! Chúng tôi sẽ liên hệ lại sớm nhất.
+                            </div>
+                            <button type="button" class="btn-close btn-close-white ms-3 me-2" data-bs-dismiss="toast"></button>
+                        </div>
+                    </div>
+
+                    <!-- Lỗi -->
+                    <div th:if="${error}" class="toast align-items-center text-bg-danger border-0 shadow-lg toast-error-custom" id="toastError" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex align-items-center">
+                            <div class="toast-icon bg-white rounded-circle me-3 d-flex align-items-center justify-content-center">
+                                <i class="bi bi-exclamation-triangle text-danger fs-4"></i>
+                            </div>
+                            <div class="toast-body fw-semibold">
+                                Lỗi khi gửi: <span th:text="${error}"></span>
+                            </div>
+                            <button type="button" class="btn-close btn-close-white ms-3 me-2" data-bs-dismiss="toast"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </form>
+
     </div>
 </section>
 
 
 <!--<footer th:replace="fragments/footer :: site-footer"></footer>-->
 <div th:replace="~{fragments/footer :: footer}"></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const toastSuccess = document.getElementById('toastSuccess');
+        const toastError = document.getElementById('toastError');
+
+        if (toastSuccess) {
+            const bsToast = new bootstrap.Toast(toastSuccess, { delay: 3000 });
+            bsToast.show();
+        }
+
+        if (toastError) {
+            const bsToast = new bootstrap.Toast(toastError, { delay: 3000 });
+            bsToast.show();
+        }
+    });
+</script>
 
 <script th:src="@{/js/homePage.js}"></script>
 <script th:src="@{/js/header.js}"></script>

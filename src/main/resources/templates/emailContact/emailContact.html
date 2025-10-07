@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Liên hệ tư vấn mới - TrangHerb EcoTech</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background-color: #f7f9f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      border: 1px solid #e0e0e0;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+    .header {
+      background: linear-gradient(135deg, #2e7d32, #4caf50);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+    .content {
+      padding: 25px;
+    }
+    .content p {
+      margin: 8px 0;
+      font-size: 15px;
+    }
+    .highlight {
+      background-color: #f4f8f5;
+      padding: 12px;
+      border-left: 4px solid #4caf50;
+      border-radius: 4px;
+      margin-top: 10px;
+      white-space: pre-wrap;
+    }
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: #888;
+      padding: 15px;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+<div class="email-container">
+  <div class="header">
+    <h1>🌿 TrangHerb EcoTech</h1>
+    <p>Thông tin liên hệ tư vấn mới</p>
+  </div>
+
+  <div class="content">
+    <p><strong>Họ và tên:</strong> <span th:text="${fullname}"></span></p>
+    <p><strong>Số điện thoại:</strong> <span th:text="${phone}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${email}"></span></p>
+
+    <p><strong>Nội dung:</strong></p>
+    <div class="highlight" th:text="${message}"></div>
+  </div>
+
+  <div class="footer">
+    <p>Đây là email tự động từ hệ thống TrangHerb EcoTech.</p>
+  </div>
+</div>
+</body>
+</html>
