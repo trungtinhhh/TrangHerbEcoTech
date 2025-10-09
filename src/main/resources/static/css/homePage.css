@@ -776,53 +776,61 @@ textarea.form-input {
     }
 }
 
-/* Hiệu ứng hiện popup */
+/* Hiệu ứng xuất hiện */
+@keyframes toastSlide {
+    from { opacity: 0; transform: translateY(-10px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 .toast {
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: all 0.5s ease;
-}
-
-.toast.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Toast màu xanh lá (thành công) */
-.toast-success-custom {
-    background: linear-gradient(135deg, #3ab97a, #1e8449);
+    animation: toastSlide 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
     color: #fff;
-    border-left: 6px solid #b6f0c2;
+    font-size: 15px;
+    min-width: 320px;
+    max-width: 480px;
 }
 
-/* Toast màu đỏ (lỗi) */
-.toast-error-custom {
-    background: linear-gradient(135deg, #d9534f, #b52a26);
-    color: #fff;
-    border-left: 6px solid #f9d3d0;
+/* Toast thành công */
+.toast-success {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
 }
 
-/* Icon vòng tròn */
+/* Toast lỗi */
+.toast-error {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+/* Icon tròn bên trái */
 .toast-icon {
     width: 36px;
     height: 36px;
-    box-shadow: 0 0 6px rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    color: #fff;
 }
 
-/* Nút đóng */
+/* Nút đóng (X) */
 .toast .btn-close {
     filter: invert(1);
     opacity: 0.8;
     transition: 0.3s;
 }
-
 .toast .btn-close:hover {
     opacity: 1;
 }
 
-/* Hiệu ứng bóng đổ và bo tròn */
-.toast {
-    border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-    font-size: 15px;
+/* Canh tổng thể toast-container */
+.toast-container {
+    z-index: 99999 !important;
+    top: 1.2rem !important;
+    right: 1.2rem !important;
 }
+
+.toast {
+    background: rgba(40, 167, 69, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+

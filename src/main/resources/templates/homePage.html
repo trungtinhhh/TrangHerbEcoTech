@@ -224,34 +224,37 @@
 
             <!-- Toast thông báo -->
             <div aria-live="polite" aria-atomic="true" class="position-relative">
-                <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+                <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 99999;">
+
                     <!-- Thành công -->
-                    <div th:if="${success}" class="toast align-items-center text-bg-success border-0 shadow-lg toast-success-custom" id="toastSuccess" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="d-flex align-items-center">
-                            <div class="toast-icon bg-white rounded-circle me-3 d-flex align-items-center justify-content-center">
-                                <i class="bi bi-check2-circle text-success fs-4"></i>
+                    <div th:if="${success}" id="toastSuccess" class="toast show border-0 shadow toast-success" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex align-items-center px-3 py-2">
+                            <div class="toast-icon d-flex align-items-center justify-content-center me-3">
+                                <i class="bi bi-check-circle-fill fs-4"></i>
                             </div>
-                            <div class="toast-body fw-semibold">
+                            <div class="toast-body fw-semibold flex-grow-1">
                                 Gửi thành công! Chúng tôi sẽ liên hệ lại sớm nhất.
                             </div>
-                            <button type="button" class="btn-close btn-close-white ms-3 me-2" data-bs-dismiss="toast"></button>
+                            <button type="button" class="btn-close ms-2" data-bs-dismiss="toast"></button>
                         </div>
                     </div>
 
                     <!-- Lỗi -->
-                    <div th:if="${error}" class="toast align-items-center text-bg-danger border-0 shadow-lg toast-error-custom" id="toastError" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="d-flex align-items-center">
-                            <div class="toast-icon bg-white rounded-circle me-3 d-flex align-items-center justify-content-center">
-                                <i class="bi bi-exclamation-triangle text-danger fs-4"></i>
+                    <div th:if="${error}" id="toastError" class="toast show border-0 shadow toast-error" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex align-items-center px-3 py-2">
+                            <div class="toast-icon d-flex align-items-center justify-content-center me-3">
+                                <i class="bi bi-exclamation-triangle-fill fs-4"></i>
                             </div>
-                            <div class="toast-body fw-semibold">
+                            <div class="toast-body fw-semibold flex-grow-1">
                                 Lỗi khi gửi: <span th:text="${error}"></span>
                             </div>
-                            <button type="button" class="btn-close btn-close-white ms-3 me-2" data-bs-dismiss="toast"></button>
+                            <button type="button" class="btn-close ms-2" data-bs-dismiss="toast"></button>
                         </div>
                     </div>
+
                 </div>
             </div>
+
 
         </form>
 
@@ -278,6 +281,23 @@
         }
     });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const toastSuccess = document.getElementById('toastSuccess');
+        const toastError = document.getElementById('toastError');
+
+        function playToast(toastEl) {
+            const bsToast = new bootstrap.Toast(toastEl, { delay: 3000 });
+            bsToast.show();
+            // Khi sắp ẩn, thêm class hide để kích hoạt animation thoát
+            setTimeout(() => toastEl.classList.add('hide'), 2600);
+        }
+
+        if (toastSuccess) playToast(toastSuccess);
+        if (toastError) playToast(toastError);
+    });
+</script>
+
 
 <script th:src="@{/js/homePage.js}"></script>
 <script th:src="@{/js/header.js}"></script>
